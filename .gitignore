@@ -1,4 +1,4 @@
 .rvmrc
 public/image/*
 Gemfile.lock
-tmp/*
+tmp/*.jpg

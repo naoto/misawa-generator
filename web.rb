@@ -20,5 +20,5 @@ end
 
 get '/image/:id' do
   content_type "image/jpeg"
-  File.open("./tmp/#{params[:id]}", 'rb') { |f| f.read }
+  File.open("/tmp/#{params[:id]}", 'rb') { |f| f.read }
 end
