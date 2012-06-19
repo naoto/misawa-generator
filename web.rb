@@ -14,7 +14,7 @@ end
 
 get '/write' do
   @name = CGI.escapeHTML(params[:user_id])
-  @image_path = MisawaMagick.new(params[:user_id]).create
+  @image_path = MisawaMagick.new(params[:user_id], settings.public_folder).create
   erb :generate
 end
 
