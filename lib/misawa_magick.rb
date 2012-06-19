@@ -6,13 +6,12 @@ require 'RMagick'
 class MisawaMagick
 
   FONT = "./font/sazanami-gothic.ttf"
-  MISAWA_DIR = "image/"
+  MISAWA_DIR = "./tmp/"
 
-  def initialize(user, directory)
+  def initialize(user)
     @poss_y = [290, 270, 250, 230, 210, 190, 170, 150, 130, 110, 90, 70, 50, 30]
     @poss_x = [90, 70, 50, -70, -90]
     @user = user
-    @directory = directory
   end
   
   def create
@@ -30,7 +29,7 @@ class MisawaMagick
       }
     }
     file_name = "#{Time.now.to_i}.jpg"
-    img.write("#{@directory}/#{MISAWA_DIR}#{file_name}")
+    img.write("#{MISAWA_DIR}#{file_name}")
     file_name
   end
 
