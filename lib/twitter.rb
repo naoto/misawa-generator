@@ -27,9 +27,9 @@ class Twitter
   end
 
   def self.status_id(id)
-    Nokogiri::HTML(open("http://api.twitter.com/1/statuses/show/#{id}.xml").read).at("status/text").content.gsub(/^.+?:\s/,"")
+    Nokogiri::HTML(open("http://api.twitter.com/1/statuses/show/#{id}.xml")).at("status/text").content.gsub(/^.+?:\s/,"")
   rescue => e
-    "エラー"
+    "エラー: #{id}"
   end
 
 end
