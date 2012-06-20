@@ -10,7 +10,7 @@ class Twitter
  
     url = "http://twitter.com/statuses/user_timeline/#{user}.rss"
     html = Nokogiri::HTML(open(url))
-    @twit = html.search("item/title").to_a
+    @twit = html.search("item/guid").to_a
   rescue => e
     @twit = []
   end
@@ -21,7 +21,13 @@ class Twitter
   end
 
   def tweet
-    @twit.first.content.gsub(/^.+?:\s/,"")
+    @twit.first.content.gsub(/^.+\/(\d+)$/,'\\1')
+  rescue => e
+    "エラー"
+  end
+
+  def self.status_id(id)
+    Nokogiri::HTML(open("http://api.twitter.com/1/statuses/show/#{id}.xml").read).at("status/text").content.gsub(/^.+?:\s/,"")
   rescue => e
     "エラー"
   end
