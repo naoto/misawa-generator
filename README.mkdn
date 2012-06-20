@@ -1,0 +1,4 @@
+Misawa Generator for heroku
+================================
+
+use ImageMagick
