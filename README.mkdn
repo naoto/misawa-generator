@@ -2,3 +2,5 @@ Misawa Generator for heroku
 ================================
 
 use ImageMagick
+
+[Misawa Generator for Heroku](http://misawagenerator.herokuapp.com)
