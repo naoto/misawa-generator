@@ -25,6 +25,8 @@ end
 
 get '/:user/:id' do
   @name = CGI.escapeHTML(params[:user])
-  @image_path = MisawaMagick.new(params[:id]).create
+  @tweet = Twitter.status_id(params[:id])
+  @image_path = MisawaMagick.new(@tweet).create
+  @tweet = CGI.escapeHTML(@tweet)
   erb :generate
 end

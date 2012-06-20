@@ -8,16 +8,15 @@ class MisawaMagick
   FONT = "./font/sazanami-gothic.ttf"
   MISAWA_DIR = "/tmp/"
 
-  def initialize(tweet_id)
+  def initialize(tweet)
     @poss_y = [290, 270, 250, 230, 210, 190, 170, 150, 130, 110, 90, 70, 50, 30]
     @poss_x = [90, 70, 50, -70, -90]
-    @tweet_id = tweet_id
+    @tweet = tweet
   end
   
   def create
-    tweet = Twitter.status_id(@tweet_id)
     pict = Picture.random
-    make(pict, tweet)
+    make(pict, @tweet)
   end
 
   def make(image, text)
