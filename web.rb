@@ -23,8 +23,8 @@ get '/image/:id' do
   File.open("/tmp/#{params[:id]}", 'rb') { |f| f.read }
 end
 
-get '/:user/:id' do
-  @name = CGI.escapeHTML(params[:user])
+get '/*/:id' do
+  @name = "hoge" #CGI.escapeHTML(params[:user])
   @image_path = MisawaMagick.new(params[:id]).create
   erb :generate
 end
