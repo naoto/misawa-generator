@@ -23,7 +23,7 @@ class Twitter
   def tweet
     @twit.first.content.gsub(/^.+\/(\d+)$/,'\\1')
   rescue => e
-    "エラー"
+    "エラー: #{e}"
   end
 
   def self.status_id(id)
