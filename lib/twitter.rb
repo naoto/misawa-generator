@@ -8,7 +8,7 @@ class Twitter
   def initialize(user)
     @user = user.gsub(/^@/,'')
  
-    url = "http://twitter.com/1/statuses/user_timeline/#{user}.rss"
+    url = "http://api.twitter.com/1/statuses/user_timeline/#{user}.rss"
     html = Nokogiri::HTML(open(url))
     @twit = html.search("item/guid").to_a
   rescue => e
