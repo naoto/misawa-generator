@@ -3,15 +3,12 @@
 require 'open-uri'
 require 'nokogiri'
 
-class Twitter
+class Tweet
 
   def initialize(user)
     @user = user.gsub(/^@/,'')
- 
-    url = "http://api.twitter.com/1/statuses/user_timeline/#{user}.rss"
-    html = Nokogiri::HTML(open(url))
-    @twit = html.search("item/guid").to_a
-  rescue => e
+    @twit = Twitter.user_timeline(user).to_a
+  rescue
     @twit = []
   end
 
@@ -27,7 +24,7 @@ class Twitter
   end
 
   def self.status_id(id)
-    Nokogiri::HTML(open("http://api.twitter.com/1/statuses/show/#{id}.xml")).at("status/text").content.gsub(/^.+?:\s/,"")
+    Twitter.status(id)
   rescue => e
     "エラー: #{e}"
   end
