@@ -18,7 +18,7 @@ class Tweet
   end
 
   def tweet
-    @twit.first.content.gsub(/^.+\/(\d+)$/,'\\1')
+    @twit.first
   rescue => e
     "エラー: #{e}"
   end
