@@ -7,7 +7,7 @@ class Tweet
 
   def initialize(user)
     @user = user.gsub(/^@/,'')
-    @twit = Twitter.user_timeline(user).map { |x| x.text }
+    @twit = Twitter.user_timeline(user).map { |x| x.id }
   rescue
     @twit = []
   end
