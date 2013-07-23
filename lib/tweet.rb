@@ -24,7 +24,7 @@ class Tweet
   end
 
   def self.status_id(id)
-    Twitter.status(id)
+    Twitter.status(id).text
   rescue => e
     "エラー: #{e}"
   end
